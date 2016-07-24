@@ -1,0 +1,91 @@
+{
+	"*": [
+		"GET GOOD, $1! ( ͡° ͜ʖ ͡°)",
+		"$1 was destroyed by $3's $2",
+		"$1 was impaled by $3's $2",
+		"pew-pew, $1, you're dead",
+		"$1 is kill",
+		"$1 tried his best, but that was not enough to kill $3.",
+		"You know, I'm just better than you, $1",
+		"You'll be forgotten quickly, $1",
+		"$1 was decapitated by $3's $2",
+		"$1's vital organs were crushed by $3's $2"
+	],
+	"*&": [
+		"$1 GOT E R A D I C A T E D",
+		"$1 was P U L V E R I Z E D with $2!",
+		"Taste the crit of $2, $1!",
+		"Random crits are fair and balanced! Right, $1? ( ͡° ͜ʖ ͡°)",
+		"$1 BIT THE CRIT ( ͡° ͜ʖ ͡°)",
+		"$1 tried to escape the critical $2",
+		"$1 was ionized by critical $2"
+	],
+	"tf_projectile_pipe_remote": [
+		"$1 was sticked by $3",
+		"$1 took spiky explosive balls to the mouth",
+		"how to kill $1 with explode spheres as demonstration man?"
+	],
+	"tf_projectile_pipe_remote&": [
+		"I love the look of team-colored crit-glowing stickybombs. Do you, $1?",
+		"$1 will be buried in a soup can",
+		"$1 will be glued back together.. In HELL!"
+	],
+	"blackbox": [
+		"$1 gave me up to 20 health",
+		"$1, ty for free health",
+		"Black $1 got blown up by Black Box",
+		"$1 choked on the Big Black Rocket",
+		"$1 perfectly works as a fuel source",
+		"$1 was Black Box'd",
+		"$1 knows what's in the box"
+	],
+	"blackbox&": [
+		"$1 gave me full 20 health!",
+		"$1 was DESTROYED by Big Black Crocket!",
+		"$1 was turned into pure life energy for $3!",
+		"$1 was brutally sacrificed for $3's lifeforce"
+	],
+	"flames": [
+		"$1 melted",
+		"$1 tried to overclock AMD",
+		"$1 is roasted",
+		"$1 tried to fight fire",
+		"$1 got W+M1'd to death",
+		"$1's corpse is still on fire",
+		"$1 went too hot",
+		"$1 couldn't put the fire out",
+		"$1 voted for Team Heavy. Bad choise"
+	],
+	"flames&": [
+		"$1 WAS R O A S T E D",
+		"$1 DIED TO CRIT-FLAMES",
+		"$1 TRIED TO ESCAPE THE FIRE",
+		"$1 GOT PHLOGISTINATED",
+		"$1 IS A PILE OF ASHES",
+		"$1's CPU BURNED OUT"
+	],
+	"flaregun": [
+		"$1 was flaregunned to death",
+		"$1 caught the flare",
+		"$1 caught the fire",
+		"$1 died to a flaregun"
+	],
+	"flaregun&": [
+		"$1 died to flare-combo",
+		"$1 ate the crit-flare",
+		"$1 was roasted by a flaregun combo",
+		"$1 was outplayed with a flare combo",
+		"$1 was fireballed by $3"
+	],
+	"rockets": [
+		"$1 likes rockets for breakfast",
+		"$1 ate the rocket",
+		"$1 forgot to run",
+		"$1 sat on the rocket"
+	],
+	"rockets&": [
+		"$1 did like the shiny rocket",
+		"$1 rode $3's rocket to OBLIVION",
+		"$1 is scattered all over the map"
+	]
+}

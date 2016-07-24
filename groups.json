@@ -1,0 +1,4 @@
+{
+	"rockets": ["tf_projectile_rocket", "dumpster_device", "blackbox", "cow_mangler", "rocketlauncher_directhit", "airstrike", "liberty_launcher"],
+	"flames": ["flamethrower", "degreaser", "backburner", "phlogistinator", "rainblower"]
+}
