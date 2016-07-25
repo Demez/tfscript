@@ -3,6 +3,7 @@ var exec = require('child_process').exec;
 var writeFile = require('fs').writeFile;
 var accessSync = require('fs').accessSync;
 var Tail = require('tail').Tail;
+var filetail = require('file-tail');
 var EventEmitter = require('events').EventEmitter;
 var jsonfile = require('jsonfile');
 
@@ -50,8 +51,13 @@ function TFScriptExtender() {
 		}
 	}
 	// Console I/O
-	this.tail = new Tail(TF2_STDOUT);
+	if (LINUX) {
+		this.tail = new Tail(TF2_STDOUT);
+	} else {
+		this.tail = filetail.startTailing(TF2_STDOUT);
+	}
 	that.tail.on('line', function(data) {
+		console.log('debug: got', data);
 		that.emit('line', data);
 		if (KILL_REGEX.test(data)) {
 			var x = KILL_REGEX.exec(data);
@@ -61,9 +67,9 @@ function TFScriptExtender() {
 	this.send = function send(command) {
 		writeFile(TF2_STDIN, command);
 		if (LINUX) {
-			exec('xdotool type --window ' + that.window + ' =');
+			exec('xdotool type --window ' + that.window + ' ' + config.interactionKey);
 		} else {
-			exec('cscript win32sendkeys.vbs =');
+			exec('keypress32 ' + config.interactionKey);
 		}
 	}
 	console.log('TF2SE loaded');

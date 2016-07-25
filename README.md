@@ -8,30 +8,47 @@ All lines are configurable. You can easily add new weapon groups, new lines for 
 
 If you want help me spreading the script, set ```promotion``` to ```true``` in ```config.json```! (disabled by default) That will send promotional messages every 240 seconds (can be configured)
 
-# Download
-
-[Releases page](https://github.com/nullifiedcat/tf2taunt/releases) contains ZIP archive with already packaged ready-to-go windows release. If you don't want to run questionable exe files or are using linux, clone this repository and run ```npm install``` in that folder. Also you'll need to have [node.js](https://nodejs.org/) installed. Click the link to download node.js package or install it using apt package manager on linux:
-```sudo apt-get install nodejs```
-
-# Installation
-
-Add ```-condebug``` into your Team Fortress 2 launch options in Steam client (Right-Click on Team Fortress 2 -> Properties -> Set Launch Options)
-
-If Steam is installed in non-default location, tf2taunt will ask you to provide path to ```tf``` folder
-
-You'll need to write ```bind = "exec stdin"``` (note: key '=' can be changed to any other key in ```config.json```)
-
-To run the script from cloned repository, type ```nodejs tf2taunt``` or ```node tf2taunt``` in terminal or cmd (windows). To open cmd, press ```Win+R``` and type ```cmd```.
-Then, follow the steps in console.
+# Step-by-Step
 
 ## Windows
-Note: tf2taunt uses Windows Shell Host script to communicate with Team Fortress 2. Script can be found at ```win32sendkeys.vbs```
-## Linux (Debian/Ubuntu)
-tf2taunt requires ```xdotool``` to be installed. To install it, simply write ```sudo apt-get install xdotool``` in your terminal.
+
+1. [Download package](https://github.com/nullifiedcat/tf2taunt/releases) with nodejs executable and script itself
+2. Unzip the package to any folder
+3. Run INSTALL.BAT in that folder
+4. Set your uid in ```config.json``` file. A method to find uid is described below
+5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add ```-condebug``` there.
+6. Open console in Team Fortress 2, type ```bind = "exec stdin"```
+7. If Team Fortress 2 is installed in non-default location, edit ```gameDirectory``` in ```config.json``` so it will point to right location. Do not forget that you need to use \\, not \
+8. You are ready, but you might want to customize your messages or settings
+
+## Linux (Ubuntu/Debian)
+
+1. Install ```nodejs``` package (```sudo apt-get install nodejs```)
+2. Install ```xdotool``` package (```sudo apt-get install xdotool```)
+2. Clone this repository into any folder
+3. Run ```npm install``` in that folder
+4. Set your uid in ```config.json``` file. A method to find uid is described below
+5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add ```-condebug``` there.
+6. Open console in Team Fortress 2, type ```bind = "exec stdin"```
+7. If Team Fortress 2 is installed in non-default location, edit ```gameDirectory``` in ```config.json``` so it will point to right location
+8. You are ready, but you might want to customize your messages or settings
+
+# How to find UID
+
+1. Join any server or create your own (```map itemtest``` in console)
+2. Type ```status``` in console
+3. Find a line with your name
+4. Get your uid from that line
+5. Put it into ```config.json```
+
+uid looks like ```[U:1:111111111]```
 
 # Configuration
 
-The script needs your UID. It looks like [U:1:111111111]. To retrieve your UID, join any server and type ```status``` in console, find the line with your name and get the UID from it
+Please note: 
+```interactionKeyLinux``` is for using in ```xdotool```. Defaults to ```=```
+```interactionKeyWin32``` is a [scancode](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) for ```keypress32```.
+Both values describe the ```=``` key. This key isn't meant for manual use so feel free to remap it to F13 or Insert if you want.
 
 ```config.json``` file contains tf2taunt settings
 ```english.json``` file contains all the lines you'll say when killing someone
