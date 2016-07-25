@@ -3,6 +3,7 @@ Report all issues here on github, or send PM to nullifiedcat on reddit
 
 # tf2taunt
 A single script to make salt pour from everyone you play with
+All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.
 
 # Download
 
@@ -27,11 +28,13 @@ tf2taunt requires ```xdotool``` to be installed. To install it, simply write ```
 
 # Configuration
 
-The application will ask you for your UID. It looks like [U:1:306902***]. To retrieve your UID, join any server and type ```status``` in console, find the line with your name and get the UID from it
+The script needs your UID. It looks like [U:1:111111111]. To retrieve your UID, join any server and type ```status``` in console, find the line with your name and get the UID from it
 
 ```config.json``` file contains tf2taunt settings
 ```english.json``` file contains all the lines you'll say when killing someone
 ```groups.json``` file contains weapon groups to use in language file (example: group ```rockets``` contains The Direct Hit, Black Box, etc..)
+
+_note: & symbol means crit kill_
 
 # Upcoming features
 
