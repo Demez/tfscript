@@ -67,9 +67,9 @@ function TFScriptExtender() {
 	this.send = function send(command) {
 		writeFile(TF2_STDIN, command);
 		if (LINUX) {
-			exec('xdotool type --window ' + that.window + ' ' + config.interactionKey);
+			exec('xdotool type --window ' + that.window + ' ' + config.interactionKeyLinux);
 		} else {
-			exec('keypress32 ' + config.interactionKey);
+			exec('keypress32 ' + config.interactionKeyWin32);
 		}
 	}
 	console.log('TF2SE loaded');
