@@ -9,6 +9,7 @@ var config = jsonfile.readFileSync('./config.json');
 var groups = jsonfile.readFileSync('./groups.json');
 var language = jsonfile.readFileSync('./' + config.language + '.json');
 var name = 0;
+var nameInvalidated = true;
 
 console.log('TF2 Text Taunts by nullifiedcat');
 
@@ -26,16 +27,25 @@ if (ScriptExtender.broken) {
 var STATUS_RE = /"(.+)"\s+(\[U\:\d\:\d+\])/;
 
 ScriptExtender.on('line', function(line) {
-	if (typeof name === 'string') return;
-	if (line.indexOf(config.uid) > 0) {
-		var x = STATUS_RE.exec(line);
-		console.log('Got name!', x[1]);
-		name = x[1];
+	if (line.indexOf('Server Number:') == 0) {
+		nameInvalidated = true;
+	}
+	if (line.indexOf('recache_name') == 0) {
+		ScriptExtender.send('status');
+		nameInvalidated = true;
+	}
+	if (nameInvalidated) {
+		if (line.indexOf(config.uid) > 0) {
+			var x = STATUS_RE.exec(line);
+			console.log('Got name!', x[1]);
+			name = x[1];
+			nameInvalidated = false;
+		}
 	}
 });
 
 ScriptExtender.on('kill', function(killer, victim, weapon, crit) {
-	if (typeof name !== 'string') {
+	if (nameInvalidated) {
 		ScriptExtender.send('status');
 	}
 	if (killer == name) {
