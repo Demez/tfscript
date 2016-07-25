@@ -45,25 +45,6 @@
 		"$1 was turned into pure life energy for $3!",
 		"$1 was brutally sacrificed for $3's lifeforce"
 	],
-	"flames": [
-		"$1 melted",
-		"$1 tried to overclock AMD",
-		"$1 is roasted",
-		"$1 tried to fight fire",
-		"$1 got W+M1'd to death",
-		"$1's corpse is still on fire",
-		"$1 went too hot",
-		"$1 couldn't put the fire out",
-		"$1 voted for Team Heavy. Bad choise"
-	],
-	"flames&": [
-		"$1 WAS R O A S T E D",
-		"$1 DIED TO CRIT-FLAMES",
-		"$1 TRIED TO ESCAPE THE FIRE",
-		"$1 GOT PHLOGISTINATED",
-		"$1 IS A PILE OF ASHES",
-		"$1's CPU BURNED OUT"
-	],
 	"flaregun": [
 		"$1 was flaregunned to death",
 		"$1 caught the flare",
@@ -87,5 +68,38 @@
 		"$1 did like the shiny rocket",
 		"$1 rode $3's rocket to OBLIVION",
 		"$1 is scattered all over the map"
+	],
+	"snipers": [
+		"$1 was sniped by $3",
+		"$1 was bodyshotted by $3",
+		"$3 left a hole in $1",
+		"$1 dropped dead",
+		"$1's body was not ready for high-velocity bullet",
+		"$1 was hit by a sniper bullet"
+	],
+	"snipers&": [
+		"$1 got headshotted by $3",
+		"$1's skull was crushed by $3's bullet",
+		"$1's brains were blown out of his skull",
+		"$1's head blew up"
+	],
+	"flames": [
+		"$1 melted",
+		"$1 tried to overclock AMD",
+		"$1 is roasted",
+		"$1 tried to fight fire",
+		"$1 got W+M1'd to death",
+		"$1's corpse is still on fire",
+		"$1 went too hot",
+		"$1 couldn't put the fire out",
+		"$1 voted for Team Heavy. Bad choise"
+	],
+	"flames&": [
+		"$1 WAS R O A S T E D",
+		"$1 DIED TO CRIT-FLAMES",
+		"$1 TRIED TO ESCAPE THE FIRE",
+		"$1 GOT PHLOGISTINATED",
+		"$1 IS A PILE OF ASHES",
+		"$1's CPU BURNED OUT"
 	]
 }
