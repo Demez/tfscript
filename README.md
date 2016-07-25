@@ -47,6 +47,7 @@ uid looks like ```[U:1:111111111]```
 
 Please note: 
 ```interactionKeyLinux``` is for using in ```xdotool```. Defaults to ```=```
+
 ```interactionKeyWin32``` is F3. It cannot be changed. TF2 treats all incoming keys from ```keypress32``` as F3. I do not know why. Do not try to change it - it won't work
 
 ```config.json``` file contains tf2taunt settings
