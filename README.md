@@ -1,9 +1,12 @@
 NOTE: Script is unfinished. More lines and groups should be added. Contributions are welcome!
 Report all issues here on github, or send PM to nullifiedcat on reddit
 
-# tf2taunt
-A single script to make salt pour from everyone you play with
+# Edgy Killfeed Script
+_that's what a lime scout would use!_
+
 All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.
+
+If you want help me spreading the script, set ```promotion``` to ```true``` in ```config.json```! (disabled by default) That will send promotional messages every 240 seconds (can be configured)
 
 # Download
 

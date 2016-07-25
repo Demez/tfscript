@@ -55,7 +55,14 @@ function pop_message() {
 	}
 }
 
+function send_spam() {
+	push_message(_.sample(language.promotion));
+}
+
 setInterval(pop_message, config.bufferFlushRate);
+if (config.promotion == true) {
+	setInterval(send_spam, config.promotionInterval);	
+}
 
 var maps = {};
 

@@ -7,5 +7,7 @@
 	"uid": "",
 	"interactionKey": "=",
 	"phaseSkipChance": 0.85,
-	"bufferFlushRate": 750
+	"bufferFlushRate": 750,
+	"promotion": false,
+	"promotionInterval": 240000
 }
