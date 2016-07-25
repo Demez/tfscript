@@ -5,7 +5,7 @@
 	},
 	"language": "english",
 	"uid": "",
-	"interactionKey": "=",
+	"interactionKey": "F8",
 	"phaseSkipChance": 0.85,
 	"bufferFlushRate": 750,
 	"promotion": false,

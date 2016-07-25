@@ -19,7 +19,7 @@ Windows version of script uses compiled AutoHotKey script to send stuff to Team 
 3. Run INSTALL.BAT in that folder
 4. Set your uid in ```config.json``` file. A method to find uid is described below
 5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add ```-condebug``` there.
-6. Open console in Team Fortress 2, type ```bind = "exec stdin"```
+6. Open console in Team Fortress 2, type ```bind F8 "exec stdin"```
 7. If Team Fortress 2 is installed in non-default location, edit ```gameDirectory``` in ```config.json``` so it will point to right location. Do not forget that you need to use \\\\, not \\
 8. You are ready, but you might want to customize your messages or settings
 
