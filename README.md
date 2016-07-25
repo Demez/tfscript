@@ -17,7 +17,7 @@ If you want help me spreading the script, set ```promotion``` to ```true``` in `
 3. Run INSTALL.BAT in that folder
 4. Set your uid in ```config.json``` file. A method to find uid is described below
 5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add ```-condebug``` there.
-6. Open console in Team Fortress 2, type ```bind = "exec stdin"```
+6. Open console in Team Fortress 2, type ```bind F3 "exec stdin"```
 7. If Team Fortress 2 is installed in non-default location, edit ```gameDirectory``` in ```config.json``` so it will point to right location. Do not forget that you need to use \\\\, not \\
 8. You are ready, but you might want to customize your messages or settings
 
@@ -47,8 +47,7 @@ uid looks like ```[U:1:111111111]```
 
 Please note: 
 ```interactionKeyLinux``` is for using in ```xdotool```. Defaults to ```=```
-```interactionKeyWin32``` is a [scancode](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) for ```keypress32```.
-Both values describe the ```=``` key. This key isn't meant for manual use so feel free to remap it to F13 or Insert if you want.
+```interactionKeyWin32``` is F3. It cannot be changed. TF2 treats all incoming keys from ```keypress32``` as F3. I do not know why. Do not try to change it - it won't work
 
 ```config.json``` file contains tf2taunt settings
 ```english.json``` file contains all the lines you'll say when killing someone

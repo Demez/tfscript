@@ -1,21 +1,20 @@
+#define WINVER 0x0500
 #include <Windows.h>
 
-void KeyPress(int vk) {
+void KeyPress(DWORD s) {
 	KEYBDINPUT ki = {0};
-	INPUT	   in = {0};
-	ki.wVk = vk;
+	INPUT	   in;
+	in.ki.dwFlags = KEYEVENTF_SCANCODE;
+	in.ki.wScan = s; 
+	in.ki.time = 0;
+	in.ki.wVk = s;
+	in.ki.dwExtraInfo = 0;
 	in.type = INPUT_KEYBOARD;
-	in.ki = ki;
 	SendInput(1, &in, sizeof(in));
-	ZeroMemory(&ki, sizeof(ki));
-	ZeroMemory(&in, sizeof(in));
-	ki.dwFlags = KEYEVENTF_KEYUP;
-	ki.wVk = vk;
-	in.type = INPUT_KEYBOARD;
-	in.ki = ki;
+	in.ki.dwFlags = KEYEVENTF_KEYUP | KEYEVENTF_SCANCODE;
 	SendInput(1, &in, sizeof(in));
 }
 
 int main(int argc, char** argv) {
-	KeyPress(argv[1]);
+	KeyPress(atoi(argv[1]));
 }
