@@ -14,7 +14,7 @@ Windows version of script uses compiled AutoHotKey script to send stuff to Team 
 
 ## Windows
 
-1. [Download package](https://github.com/nullifiedcat/tf2taunt/releases) with nodejs executable and script itself
+1. [Download package](https://github.com/nullifiedcat/tfscript/releases) with nodejs executable and script itself
 2. Unzip the package to any folder
 3. Run INSTALL.BAT in that folder
 4. Set your uid in ```config.json``` file. A method to find uid is described below

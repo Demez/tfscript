@@ -68,7 +68,7 @@ function TFScriptExtender() {
 		console.log(' in>', command);
 		writeFile(TF2_STDIN, command);
 		if (LINUX) {
-			exec('xdotool type --window ' + that.window + ' ' + config.interactionKey);
+			exec('xdotool key --window ' + that.window + ' ' + config.interactionKey);
 		} else {
 			exec('keypress32 ' + config.interactionKey);
 		}
