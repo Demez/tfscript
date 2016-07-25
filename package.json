@@ -1,0 +1,29 @@
+{
+  "name": "tf2taunt",
+  "version": "1.0.0",
+  "description": "A tf2 external chat script",
+  "main": "ctaunt.js",
+  "dependencies": {
+    "jsonfile": "^2.3.1",
+    "tail": "^1.1.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nullifiedcat/tf2taunt.git"
+  },
+  "keywords": [
+    "tf2",
+    "chat"
+  ],
+  "author": "nullifiedcat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nullifiedcat/tf2taunt/issues"
+  },
+  "homepage": "https://github.com/nullifiedcat/tf2taunt#readme"
+}

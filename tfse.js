@@ -29,23 +29,22 @@ function TFScriptExtender() {
 	EventEmitter.call(this);
 	var that = this;
 	this.broken = false;
-	console.log('TF2 Script Extender by nullifiedcat');
 	if (!exists(TF2_STDOUT)) {
 		console.log('Could not locate console.log! Check your tf2 folder path in config.json and -condebug option in Steam launch options!');
 		this.broken = true;
 		return;
 	}
 	if (!LINUX && !WIN32) {
-		console.log('TF2 Script Extender cannot be run on that operating system:', process.platform);
+		console.log('Platform not supported:', process.platform);
 		this.broken = true;
 		return;
 	}
 	if (LINUX) {
-		this.window = execSync('xdotool search --class hl2_linux').toString().replace('\n', '');
-		if (that.window) {
+		try {
+			this.window = execSync('xdotool search --class hl2_linux').toString().replace('\n', '');
 			console.log('TF2 Window found:', that.window);
-		} else {
-			console.log('TF2 Script Extender could not locate Team Fortress 2 window');
+		} catch (ex) {
+			console.log('Could not locate Team Fortress 2 window');
 			this.broken = true;
 			return;
 		}
@@ -67,6 +66,7 @@ function TFScriptExtender() {
 			exec('cscript win32sendkeys.vbs =');
 		}
 	}
+	console.log('TF2SE loaded');
 }
 
 TFScriptExtender.prototype.__proto__ = EventEmitter.prototype;

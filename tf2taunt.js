@@ -10,7 +10,18 @@ var groups = jsonfile.readFileSync('./groups.json');
 var language = jsonfile.readFileSync('./' + config.language + '.json');
 var name = 0;
 
+console.log('TF2 Text Taunts by nullifiedcat');
+
+if (config.uid == '') {
+	console.log('uid not set! Please follow installation instructions in README');
+	return;
+}
+
 var ScriptExtender = new TFScriptExtender();
+if (ScriptExtender.broken) {
+	console.log('Could not initialize TF2SE. The application will now exit.');
+	process.exit(1);
+}
 
 var STATUS_RE = /"(.+)"\s+(\[U\:\d\:\d+\])/;
 

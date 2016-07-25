@@ -1,4 +1,5 @@
 NOTE: Script is unfinished. More lines and groups should be added. Contributions are welcome!
+Report all issues here on github, or send PM to nullifiedcat on reddit
 
 # tf2taunt
 A single script to make salt pour from everyone you play with
