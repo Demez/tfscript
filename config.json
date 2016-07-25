@@ -6,7 +6,7 @@
 	"language": "english",
 	"uid": "",
 	"interactionKeyLinux": "=",
-	"interactionKeyWin32": 61,
+	"interactionKeyWin32": 0,
 	"phaseSkipChance": 0.85,
 	"bufferFlushRate": 750,
 	"promotion": false,
