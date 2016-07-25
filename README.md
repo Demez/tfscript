@@ -35,6 +35,8 @@ The application will ask you for your UID. It looks like [U:1:306902***]. To ret
 
 # Upcoming features
 
+* Killstreak announcing
+* Weapon whitelist and blacklist modes, for example, announce only headshot-penetrate kills or melee kills
 * Localization files updates
 * Kill counters (soon)
 * Rough class detection based on weapon used for last kill and triggers for it (not very soon)

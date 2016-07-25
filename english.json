@@ -15,8 +15,8 @@
 		"$1 GOT E R A D I C A T E D",
 		"$1 was P U L V E R I Z E D with $2!",
 		"Taste the crit of $2, $1!",
-		"Random crits are fair and balanced! Right, $1? ( ͡° ͜ʖ ͡°)",
-		"$1 BIT THE CRIT ( ͡° ͜ʖ ͡°)",
+		"Random crits are fair and balanced! Right, $1? :^)",
+		"$1 BIT THE CRIT",
 		"$1 tried to escape the critical $2",
 		"$1 was ionized by critical $2"
 	],
@@ -59,6 +59,8 @@
 		"$1 was fireballed by $3"
 	],
 	"rockets": [
+		"$1 was gibbed by $3's rocket",
+		"$1 rides $3's rocket",
 		"$1 likes rockets for breakfast",
 		"$1 ate the rocket",
 		"$1 forgot to run",
@@ -84,6 +86,7 @@
 		"$1's head blew up"
 	],
 	"flames": [
+		"$1 visits the Volcano God",
 		"$1 melted",
 		"$1 tried to overclock AMD",
 		"$1 is roasted",
