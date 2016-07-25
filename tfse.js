@@ -1,23 +1,40 @@
 var execSync = require('child_process').execSync;
 var exec = require('child_process').exec;
 var writeFile = require('fs').writeFile;
+var accessSync = require('fs').accessSync;
 var Tail = require('tail').Tail;
 var EventEmitter = require('events').EventEmitter;
+var jsonfile = require('jsonfile');
 
 var LINUX = (process.platform == 'linux');
 var WIN32 = (process.platform == 'win32');
 
-var TF2_FOLDER = process.env.HOME + '/.local/share/Steam/steamapps/common/Team Fortress 2/tf';
+var config = jsonfile.readFileSync('./config.json');
+var TF2_FOLDER = LINUX ? config.gameDirectory.linux.replace('~', process.env.HOME) : config.gameDirectory.win32;
 var TF2_STDOUT = TF2_FOLDER + '/console.log';
 var TF2_STDIN  = TF2_FOLDER + '/cfg/stdin.cfg';
 
 var KILL_REGEX = /(.+) killed (.+) with (.+)\.( \(crit\))?/;
+
+function exists(name) {
+	try {
+		accessSync(name);
+		return true;
+	} catch (ex) {
+		return false;
+	}
+}
 
 function TFScriptExtender() {
 	EventEmitter.call(this);
 	var that = this;
 	this.broken = false;
 	console.log('TF2 Script Extender by nullifiedcat');
+	if (!exists(TF2_STDOUT)) {
+		console.log('Could not locate console.log! Check your tf2 folder path in config.json and -condebug option in Steam launch options!');
+		this.broken = true;
+		return;
+	}
 	if (!LINUX && !WIN32) {
 		console.log('TF2 Script Extender cannot be run on that operating system:', process.platform);
 		this.broken = true;
