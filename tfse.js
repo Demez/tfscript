@@ -57,7 +57,7 @@ function TFScriptExtender() {
 		this.tail = filetail.startTailing(TF2_STDOUT);
 	}
 	that.tail.on('line', function(data) {
-		console.log('debug: got', data);
+		console.log('out>', data);
 		that.emit('line', data);
 		if (KILL_REGEX.test(data)) {
 			var x = KILL_REGEX.exec(data);
@@ -65,11 +65,12 @@ function TFScriptExtender() {
 		}
 	});
 	this.send = function send(command) {
+		console.log(' in>', command);
 		writeFile(TF2_STDIN, command);
 		if (LINUX) {
-			exec('xdotool type --window ' + that.window + ' ' + config.interactionKeyLinux);
+			exec('xdotool type --window ' + that.window + ' ' + config.interactionKey);
 		} else {
-			exec('keypress32 ' + config.interactionKeyWin32);
+			exec('keypress32 ' + config.interactionKey);
 		}
 	}
 	console.log('TF2SE loaded');
