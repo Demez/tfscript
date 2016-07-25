@@ -5,9 +5,9 @@
 	},
 	"language": "english",
 	"uid": "",
-	"interactionKey": "F8",
+	"interactionKey": "F11",
 	"phaseSkipChance": 0.85,
-	"bufferFlushRate": 750,
+	"bufferFlushRate": 800,
 	"promotion": false,
 	"promotionInterval": 240000
 }
