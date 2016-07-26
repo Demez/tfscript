@@ -45,6 +45,12 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 
 `uid` looks like `[U:1:111111111]`
 
+# Updating the script
+
+Just [download ZIP](https://github.com/nullifiedcat/tfscript/archive/master.zip) and unpack everything to your script folder, replacing files in process. (You might want to save `uid` from your `config.json` before updating)
+
+Updating will be made easier in future releases
+
 # Configuration
 
 `config.json` file contains tf2taunt settings
