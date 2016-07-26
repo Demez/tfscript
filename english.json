@@ -25,7 +25,8 @@
 		"Random crits are fair and balanced! Right, $1? :^)",
 		"$1 BIT THE CRIT",
 		"$1 tried to escape the critical $2",
-		"$1 was ionized by critical $2"
+		"$1 was ionized by critical $2",
+		"$1, random crits are fair and balanced. Stop whining."
 	],
 	"tf_projectile_pipe_remote": [
 		"$1 was sticked by $3",
@@ -111,5 +112,25 @@
 		"$1 GOT PHLOGISTINATED",
 		"$1 IS A PILE OF ASHES",
 		"$1's CPU BURNED OUT"
+	],
+	"knives": [
+		"$1 was butterknived",
+		"$1 got poked with a knife",
+		"$1 got cut",
+		"$1 got stabbed"
+	],
+	"knives&": [
+		"$1 WAS SURPRISE BUTTSEXED",
+		"$1's BACKBONE CRIPPLED",
+		"$1's BACK WAS DESTROYED",
+		"$1 didn't watch his behind",
+		"A horrible chill goes down $1's spine",
+		"$1 WAS DRILLED FROM BEHIND"
+	],
+	"ambassador&": [
+		"$1's head blew up",
+		"$1 got noscoped",
+		"$1 died to a spy headshot",
+		"$1 was politely disposed"
 	]
 }

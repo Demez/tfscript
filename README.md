@@ -6,9 +6,9 @@ _that's what a lime scout would use!_
 
 All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.
 
-If you want help me spreading the script, set ```promotion``` to ```true``` in ```config.json```! (disabled by default) That will send promotional messages every 240 seconds (can be configured)
+If you want help me spreading the script, set `promotion` to `true` in `config.json`! (disabled by default) That will send promotional messages every 60 seconds (can be configured)
 
-Windows version of script uses compiled AutoHotKey script to send stuff to Team Fortress 2 window
+Windows version of script uses compiled AutoHotKey script to send keystrokes to Team Fortress 2 window
 
 # Step-by-Step
 
@@ -17,43 +17,43 @@ Windows version of script uses compiled AutoHotKey script to send stuff to Team 
 1. [Download package](https://github.com/nullifiedcat/tfscript/releases) with nodejs executable and script itself
 2. Unzip the package to any folder
 3. Run INSTALL.BAT in that folder
-4. Set your uid in ```config.json``` file. A method to find uid is described below
-5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add ```-condebug``` there.
-6. Open console in Team Fortress 2, type ```bind F11 "exec stdin"```
-7. If Team Fortress 2 is installed in non-default location, edit ```gameDirectory``` in ```config.json``` so it will point to right location. Do not forget that you need to use \\\\, not \\
+4. Set your uid in `config.json` file. A method to find uid is described below
+5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add `-condebug` there.
+6. Open console in Team Fortress 2, type `bind F11 "exec stdin"`
+7. If Team Fortress 2 is installed in non-default location, edit `gameDirectory` in `config.json` so it will point to right location. Do not forget that you need to use \\\\, not \\
 8. You are ready, but you might want to customize your messages or settings
 
 ## Linux (Ubuntu/Debian)
 
-1. Install ```nodejs``` package (```sudo apt-get install nodejs```)
-2. Install ```xdotool``` package (```sudo apt-get install xdotool```)
+1. Install `nodejs` package (`sudo apt-get install nodejs`)
+2. Install `xdotool` package (`sudo apt-get install xdotool`)
 2. Clone this repository into any folder
-3. Run ```npm install``` in that folder
-4. Set your uid in ```config.json``` file. A method to find uid is described below
-5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add ```-condebug``` there.
-6. Open console in Team Fortress 2, type ```bind = "exec stdin"```
-7. If Team Fortress 2 is installed in non-default location, edit ```gameDirectory``` in ```config.json``` so it will point to right location
+3. Run `npm install` in that folder
+4. Set your uid in `config.json` file. A method to find uid is described below
+5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add `-condebug` there.
+6. Open console in Team Fortress 2, type `bind F11 "exec stdin"`
+7. If Team Fortress 2 is installed in non-default location, edit `gameDirectory` in `config.json` so it will point to right location
 8. You are ready, but you might want to customize your messages or settings
 
 # How to find UID
 
-1. Join any server or create your own (```map itemtest``` in console)
-2. Type ```status``` in console
+1. Join any server or create your own (`map itemtest` in console)
+2. Type `status` in console
 3. Find a line with your name
 4. Get your uid from that line
-5. Put it into ```config.json```
+5. Put it into `config.json`
 
-uid looks like ```[U:1:111111111]```
+`uid` looks like `[U:1:111111111]`
 
 # Configuration
 
-```config.json``` file contains tf2taunt settings
-```english.json``` file contains all the lines you'll say when killing someone
-```groups.json``` file contains weapon groups to use in language file (example: group ```rockets``` contains The Direct Hit, Black Box, etc..)
+`config.json` file contains tf2taunt settings
+`english.json` file contains all the lines you'll say when killing someone
+`groups.json` file contains weapon groups to use in language file (example: group `rockets` contains The Direct Hit, Black Box, etc..)
 
 _note: & symbol means crit kill_
 
-# Upcoming features
+# Planned features
 
 * Killstreak announcing
 * Weapon whitelist and blacklist modes, for example, announce only headshot-penetrate kills or melee kills

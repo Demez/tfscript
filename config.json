@@ -4,10 +4,10 @@
 		"linux": "~/.local/share/Steam/steamapps/common/Team Fortress 2/tf"
 	},
 	"language": "english",
-	"uid": "",
+	"uid": "[U:1:REPLACEME]",
 	"interactionKey": "F11",
 	"phaseSkipChance": 0.85,
 	"bufferFlushRate": 800,
 	"promotion": false,
-	"promotionInterval": 240000
+	"promotionInterval": 60000
 }
