@@ -22,5 +22,6 @@ echo Downloading dependencies
 call npm install >> install.log
 node configure "%TFDIR%"
 echo :: tfscript by nullifiedcat is installed successfully
+if not exist "data\uid.txt" echo. > data\uid.txt
 echo !!! DO NOT FORGET TO PUT YOUR UID IN UID.TXT FILE !!!
 pause

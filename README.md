@@ -19,6 +19,7 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 3. Run `install.bat`. It will ask for your `tf` folder (if your steam library is installed in non-default location). `tf` it should be located at `SteamLibrary\steamapps\common\Team Fortress 2\tf`
 4. Put your `uid` in `data/uid.txt` file. Instructions on finding your `uid` are below
 5. You are ready, but you might want to customize your messages or settings
+6. Run the script with `start.bat`
 
 ## Linux (Ubuntu/Debian)
 
@@ -31,6 +32,7 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 6. Open console in Team Fortress 2, type `bind F11 "exec stdin"`
 7. If Team Fortress 2 is installed in non-default location, edit `gameDirectory` in `config.json` so it will point to right location
 8. You are ready, but you might want to customize your messages or settings
+9. Run the script with `node tfscript`
 
 # How to find UID
 
@@ -44,9 +46,7 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 
 # Updating the script
 
-Just [download ZIP](https://github.com/nullifiedcat/tfscript/archive/master.zip) and unpack everything to your script folder, replacing files in process. (You might want to save `uid` from your `config.json` before updating)
-
-Updating will be made easier in future releases
+Just [download ZIP](https://github.com/nullifiedcat/tfscript/archive/master.zip) and unpack everything to your script folder (replace old files)
 
 # Configuration
 
