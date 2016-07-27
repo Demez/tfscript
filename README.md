@@ -35,14 +35,15 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 9. Run the script with `node tfscript`
 
 # How to find UID
+`uid` looks like `[U:1:111111111]`
+
+Use [this site](https://steamid.io/lookup) to find your **steamID3** from your profile link, or
 
 1. Join any server or create your own (`map itemtest` in console)
 2. Type `status` in console
 3. Find a line with your name
 4. Get your uid from that line
-5. Put it into `config.json`
-
-`uid` looks like `[U:1:111111111]`
+5. Put it into `data/uid.txt`
 
 # Updating the script
 
