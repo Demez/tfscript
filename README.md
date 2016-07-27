@@ -6,7 +6,7 @@ _that's what a lime scout would use!_
 
 All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.
 
-If you want help me spreading the script, set `promotion` to `true` in `config.json`! (disabled by default) That will send promotional messages every 60 seconds (can be configured)
+If you want help me spreading the script, set `promotion` to `true` in `data/modtaunt.json`! (disabled by default) That will send promotional messages every 60 seconds (can be configured)
 
 Windows version of script uses compiled AutoHotKey script to send keystrokes to Team Fortress 2 window
 
