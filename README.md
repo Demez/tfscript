@@ -1,7 +1,7 @@
 NOTE: Script is unfinished. More lines and groups should be added. Contributions are welcome!
 Report all issues here on github, or send PM to nullifiedcat on reddit
 
-# Edgy Killfeed Script
+# Edgy Killfeed Script (now with Quake Sounds!)
 _that's what a lime scout would use!_
 
 All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.

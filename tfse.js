@@ -56,7 +56,7 @@ function TFScriptExtender() {
 		this.broken = true;
 		return;
 	} else {
-		var uidm = UID_REGEX.exec();
+		var uidm = UID_REGEX.exec(that.uid);
 		that.uid = uidm[1];
 	}
 	if (!LINUX && !WIN32) {
@@ -80,8 +80,7 @@ function TFScriptExtender() {
 	} else {
 		this.tail = filetail.startTailing(TF2_STDOUT);
 	}
-	that.tail.on('line', function(data) {
-		console.log('out>', data);
+	that.tail.on('line', function(data) {	
 		that.emit('line', data);
 		if (that.usernameRecache && data.indexOf(that.uid) > 0 && STATUS_REGEX.test(data)) {
 			var x = STATUS_REGEX.exec(data);
@@ -94,6 +93,7 @@ function TFScriptExtender() {
 			if (serverChangeState == SERVERCHANGE.length) {
 				// You've joined a new server
 				that.emit('server-change');
+				console.log('Server changed!');
 				serverChangeState = 0;
 				killStreak = 0;
 			}
