@@ -14,7 +14,7 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 
 # Step-by-Step
 
-## Windows
+## Windows (script release 4 and above)
 
 1. [Download package](https://github.com/nullifiedcat/tfscript/releases) with nodejs executable and script itself
 2. Unzip the package to any folder
@@ -68,6 +68,10 @@ _note: & symbol means crit kill_
 
 * __Sam__ for testing the script on Windows
 * __Dragonisser__ for testing the script on Windows
+
+# Known bugs
+
+`killStreak` doesn't reset when preparing time ends/next round starts. I can't think of any fix because match start doesn't log anything to console
 
 # Planned features
 
