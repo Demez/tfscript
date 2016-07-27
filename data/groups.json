@@ -4,5 +4,6 @@
 	"snipers": ["sniperrifle", "machina", "the_classic", "pro_rifle", "bazaar_bargain", "sydney_sleeper"],
 	"knives": ["knife", "eternal_reward", "spy_cicle", "sharp_dresser", "black_rose", "kunai", "big_earner", "voodoo_pin"],
 	"revolvers": ["revolver", "samrevolver", "ambassador", "letranger", "enforcer", "diamondback"],
-	"bonesaws": ["bonesaw", "ubersaw", "battleneedle", "amputator"]
+	"bonesaws": ["bonesaw", "ubersaw", "battleneedle", "amputator"],
+	"deflects": ["deflect_rocket"]
 }

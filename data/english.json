@@ -18,43 +18,78 @@
 		"$1 was decapitated by $3's $2",
 		"$1's vital organs were crushed by $3's $2",
 		"$1 isn't good enough",
-		"$1 noob down"
+		"another noob down: $1",
+		"$1's heart stopped working",
+		"$1 will not be missed",
+		"Oh, $1, who will they find to replace you? Anyone!"
 	],
 	"*&": [
-		"$1 GOT E R A D I C A T E D",
-		"$1 was P U L V E R I Z E D with $2!",
-		"Taste the crit of $2, $1!",
+		"$1 got ERADICATED",
+		"$1 was PULVERIZED with $2!",
+		"$1 tasted the crit of $2",
 		"Random crits are fair and balanced! Right, $1? :^)",
 		"$1 BIT THE CRIT",
 		"$1 tried to escape the critical $2",
 		"$1 was ionized by critical $2",
 		"$1, random crits are fair and balanced. Stop whining.",
-		"$1 loves random crits"
+		"$1 loves random crits",
+		"$1 tried to fight the power",
+		"$1 was crushed into dust",
+		"$1's body was cleaved into primal particles",
+		"$1 could not escape the crit",
+		"$1 was brutally destroyed",
+		"$1 had been shown who is the boss!"
 	],
 	"tf_projectile_pipe_remote": [
+		"$1 was stickyspammed by $3",
+		"$1 couldn't see the bloody bombs",
+		"$1's legs were blown away by a sticky mine",
+		"$1 was gibbed by $3's stickybomb",
+		"$1 tried to defuse stickybomb",
 		"$1 was sticked by $3",
-		"$1 took spiky explosive balls to the mouth",
-		"how to kill $1 with explode spheres as demonstration man?"
+		"$1's face was blown away by spiky explosive balls",
+		"$1 died to demonstration man's explosive spheres"
 	],
 	"tf_projectile_pipe_remote&": [
+		"I've been shagging $1's wife",
+		"Oh they're going to find $1 dead in the alley, with cats lickin' at him"
 		"I love the look of team-colored crit-glowing stickybombs. Do you, $1?",
 		"$1 will be buried in a soup can",
-		"$1 will be glued back together.. In HELL!"
+		"$1 will be glued back together.. In HELL!",
+		"I didn't need your help, ya know, $1",
+		"Go to hell, $1, and tell the devil I'm comin' for him next!"
+	],
+	"tf_projectile_pipe": [
+		"$1 was gibbed by $3's grenade",
+		"$1 was bombarded by $3",
+		"$1 took the wrong pill",
+		"$1 now knows that pill is kill",
+		"$1 was destroyed by $3's grenade",
+		"$1's arms were blown away by $3's grenade"
+	],
+	"tf_projectile_pipe&": [
+		"Take a chill pill, $1",
+		"$1's face was blown away by $3's critical explosive pill",
+		"$1 ate $3's glowing grenade",
+		"Grow some hair on your face, then come and try me again, $1!",
+		"$1 was crit-naded by $3"
 	],
 	"blackbox": [
-		"$1 gave me up to 20 health",
-		"$1, ty for free health",
-		"Black $1 got blown up by Black Box",
+		"$1 gave me up to +20 health",
+		"thx 4 free hp, $1 <3",
+		"$1 got blown up by Afro-American Box",
 		"$1 choked on the Big Black Rocket",
-		"$1 perfectly works as a fuel source",
+		"$1 perfectly works as an energy source",
 		"$1 was Black Box'd",
-		"$1 knows what's in the box"
+		"$1 knows what's in the black box"
 	],
 	"blackbox&": [
-		"$1 gave me full 20 health!",
+		"$1's death gave me 20 health!",
 		"$1 was DESTROYED by Big Black Crocket!",
 		"$1 was turned into pure life energy for $3!",
-		"$1 was brutally sacrificed for $3's lifeforce"
+		"$1 was brutally sacrificed for $3's lifeforce",
+		"$1's health is now $3's",
+		"$3 feasts on $1's heart"
 	],
 	"flaregun": [
 		"$1 was flaregunned to death",
@@ -74,13 +109,19 @@
 		"$1 rides $3's rocket",
 		"$1 likes rockets for breakfast",
 		"$1 ate the rocket",
-		"$1 forgot to run",
-		"$1 sat on the rocket"
+		"$1 forgot to run from the rocket",
+		"$1 sat on the rocket",
+		"$1 is a maggot",
+		"I joined this team just to kill maggots like $1!"
 	],
 	"rockets&": [
 		"$1 did like the shiny rocket",
 		"$1 rode $3's rocket to OBLIVION",
-		"$1 is scattered all over the map"
+		"$1 is scattered all over the map",
+		"$1 will be sent to his mama in a box!",
+		"If God had wanted $1 to live, he would not have created $3!",
+		"Aww, to violent for you $1?",
+		"$1's white flag didn't stop $3's crockets"
 	],
 	"snipers": [
 		"$1 was sniped by $3",
@@ -126,10 +167,13 @@
 		"$1 WAS SURPRISE BUTTSEXED",
 		"$1's BACKBONE IS CRIPPLED",
 		"$1's BACK WAS DESTROYED",
-		"$1 didn't watch his behind",
+		"$1 didn't watch his back",
 		"A horrible chill goes down $1's spine",
 		"$1 WAS DRILLED FROM BEHIND",
-		"$1 was penetrated from behind"
+		"$1 WAS PENETRATED FROM BEHIND",
+		"Here lies $1. He ran fast and died a virgin!",
+		"Well, off to visit $1's mother!",
+		"$1 had an unexpected anal intercourse with $3's knife"
 	],
 	"ambassador&": [
 		"$1's head blew up",
