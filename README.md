@@ -16,12 +16,9 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 
 1. [Download package](https://github.com/nullifiedcat/tfscript/releases) with nodejs executable and script itself
 2. Unzip the package to any folder
-3. Run INSTALL.BAT in that folder
-4. Set your uid in `config.json` file. A method to find uid is described below
-5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add `-condebug` there.
-6. Open console in Team Fortress 2, type `bind F11 "exec stdin"`
-7. If Team Fortress 2 is installed in non-default location, edit `gameDirectory` in `config.json` so it will point to right location. Do not forget that you need to use \\\\, not \\
-8. You are ready, but you might want to customize your messages or settings
+3. Run `install.bat`. It will ask for your `tf` folder (if your steam library is installed in non-default location). `tf` it should be located at `SteamLibrary\steamapps\common\Team Fortress 2\tf`
+4. Put your `uid` in `data/uid.txt` file. Instructions on finding your `uid` are below
+5. You are ready, but you might want to customize your messages or settings
 
 ## Linux (Ubuntu/Debian)
 
@@ -53,11 +50,21 @@ Updating will be made easier in future releases
 
 # Configuration
 
-`config.json` file contains tf2taunt settings
+Configs are stored in `data` folder
+
+`uid.txt` should contain your `uid`
+`config.json` file contains tfse settings, like game folder and interaction key (don't change it unless you know what you are doing)
+`modtaunt.json` contains tftaunt settings
+`modquake.json` contains quake sounds settings
 `english.json` file contains all the lines you'll say when killing someone
 `groups.json` file contains weapon groups to use in language file (example: group `rockets` contains The Direct Hit, Black Box, etc..)
 
 _note: & symbol means crit kill_
+
+# Special Thanks
+
+* __Sam__ for testing the script on Windows
+* __Dragonisser__ for testing the script on Windows
 
 # Planned features
 
@@ -67,5 +74,6 @@ _note: & symbol means crit kill_
 * Kill counters (soon)
 * Rough class detection based on weapon used for last kill and triggers for it (not very soon)
 * Possibly even more
+* Proper weapon names as $2 (for example `Stickybomb Launcher` instead of `tf_projectile_pipe_remote`)
 
 Stay tuned!

@@ -3,11 +3,6 @@
 		"win32": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf",
 		"linux": "~/.local/share/Steam/steamapps/common/Team Fortress 2/tf"
 	},
-	"language": "english",
 	"uid": "[U:1:REPLACEME]",
-	"interactionKey": "F11",
-	"phaseSkipChance": 0.85,
-	"bufferFlushRate": 800,
-	"promotion": false,
-	"promotionInterval": 60000
+	"interactionKey": "F11"
 }

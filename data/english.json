@@ -16,7 +16,9 @@
 		"You know, I'm just better than you, $1",
 		"You'll be forgotten quickly, $1",
 		"$1 was decapitated by $3's $2",
-		"$1's vital organs were crushed by $3's $2"
+		"$1's vital organs were crushed by $3's $2",
+		"$1 isn't good enough",
+		"$1 noob down"
 	],
 	"*&": [
 		"$1 GOT E R A D I C A T E D",
@@ -26,7 +28,8 @@
 		"$1 BIT THE CRIT",
 		"$1 tried to escape the critical $2",
 		"$1 was ionized by critical $2",
-		"$1, random crits are fair and balanced. Stop whining."
+		"$1, random crits are fair and balanced. Stop whining.",
+		"$1 loves random crits"
 	],
 	"tf_projectile_pipe_remote": [
 		"$1 was sticked by $3",
@@ -115,17 +118,18 @@
 	],
 	"knives": [
 		"$1 was butterknived",
-		"$1 got poked with a knife",
+		"$1 got poked with a $2",
 		"$1 got cut",
 		"$1 got stabbed"
 	],
 	"knives&": [
 		"$1 WAS SURPRISE BUTTSEXED",
-		"$1's BACKBONE CRIPPLED",
+		"$1's BACKBONE IS CRIPPLED",
 		"$1's BACK WAS DESTROYED",
 		"$1 didn't watch his behind",
 		"A horrible chill goes down $1's spine",
-		"$1 WAS DRILLED FROM BEHIND"
+		"$1 WAS DRILLED FROM BEHIND",
+		"$1 was penetrated from behind"
 	],
 	"ambassador&": [
 		"$1's head blew up",

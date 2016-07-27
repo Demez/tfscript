@@ -1,0 +1,2 @@
+node tfscript
+pause >nul
