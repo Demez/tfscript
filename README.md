@@ -4,6 +4,8 @@ Report all issues here on github, or send PM to nullifiedcat on reddit
 # Edgy Killfeed Script (now with Quake Sounds!)
 _that's what a lime scout would use!_
 
+Quake sounds use `playsound.exe` on Windows and `aplay` on linux (needs `alsa-utils`). Please note that sounds are quite loud.
+
 All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.
 
 If you want help me spreading the script, set `promotion` to `true` in `data/modtaunt.json`! (disabled by default) That will send promotional messages every 60 seconds (can be configured)

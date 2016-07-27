@@ -94,8 +94,8 @@ function TFScriptExtender() {
 				// You've joined a new server
 				that.emit('server-change');
 				console.log('Server changed!');
-				serverChangeState = 0;
-				killStreak = 0;
+				that.serverChangeStage = 0;
+				that.killStreak = 0;
 			}
 		} else {
 			serverChangeState = 0;
