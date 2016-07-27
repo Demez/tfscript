@@ -91,7 +91,7 @@
 		"$1 was hit by a sniper bullet"
 	],
 	"snipers&": [
-		"$1 got headshotted by $3",
+		"$1 got headshot by $3",
 		"$1's skull was crushed by $3's bullet",
 		"$1's brains were blown out of his skull",
 		"$1's head blew up"

@@ -4,6 +4,8 @@ Report all issues here on github, or send PM to nullifiedcat on reddit
 # Edgy Killfeed Script (now with Quake Sounds!)
 _that's what a lime scout would use!_
 
+[Watch the video!](https://www.youtube.com/watch?v=aOt3R-S4Y7k)
+
 Quake sounds use `playsound.exe` on Windows and `aplay` on linux (needs `alsa-utils`). Please note that sounds are quite loud.
 
 All lines are configurable. You can easily add new weapon groups, new lines for groups/specific weapons. Upcoming features include more customization, like weapon blacklists/whitelists, killstreaks, kill counters, etc.
@@ -72,6 +74,8 @@ _note: & symbol means crit kill_
 # Known bugs
 
 `killStreak` doesn't reset when preparing time ends/next round starts. I can't think of any fix because match start doesn't log anything to console
+
+All kills made using Australium weapons are interpreted as **crit** kills, this cannot be fixed without hooking into tf2
 
 # Planned features
 
