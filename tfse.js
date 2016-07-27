@@ -88,9 +88,9 @@ function TFScriptExtender() {
 			console.log('tfse> Username is', that.username);
 			that.usernameRecache = false;
 		}
-		if (data.indexOf(SERVERCHANGE[that.serverChangeState]) == 0) {
-			serverChangeState++;
-			if (serverChangeState == SERVERCHANGE.length) {
+		if (data.indexOf(SERVERCHANGE[that.serverChangeStage]) >= 0) {
+			that.serverChangeStage++;
+			if (that.serverChangeStage >= SERVERCHANGE.length) {
 				// You've joined a new server
 				that.emit('server-change');
 				console.log('Server changed!');
