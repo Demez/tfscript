@@ -5,5 +5,6 @@
 	"knives": ["knife", "eternal_reward", "spy_cicle", "sharp_dresser", "black_rose", "kunai", "big_earner", "voodoo_pin"],
 	"revolvers": ["revolver", "samrevolver", "ambassador", "letranger", "enforcer", "diamondback"],
 	"bonesaws": ["bonesaw", "ubersaw", "battleneedle", "amputator"],
-	"deflects": ["deflect_rocket"]
+	"deflects": ["deflect_rocket"],
+	"miniguns": ["minigun", "tomislav", "brass_beast", "natascha"]
 }

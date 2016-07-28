@@ -81,7 +81,7 @@
 		"$1 choked on the Big Black Rocket",
 		"$1 perfectly works as an energy source",
 		"$1 was Black Box'd",
-		"$1 knows what's in the black box"
+		"$1 knows what's in the box"
 	],
 	"blackbox&": [
 		"$1's death gave me 20 health!",
@@ -180,5 +180,22 @@
 		"$1 got noscoped",
 		"$1 died to a spy headshot",
 		"$1 was politely disposed"
+	],
+	"miniguns": [
+		"$1 is full of bullet holes",
+		"$1 catched all the bullets",
+		"$1 has attempted to steal $3's sandvich",
+		"$1, cry some more",
+		"*laughter* Look at $1's little baby guns!",
+		"$1, the burning you feel? It is shame!",
+		"$1 voted for tiny baby pyro team"
+	],
+	"miniguns&": [
+		"$1 is dead, not big surprise!",
+		"$1 is dead, not big soup rice!",
+		"What sick man sends $1 to fight me?",
+		"$1! Yes, you! You are dead!",
+		"Keep crying, $1!",
+		"$1 did not withstand the bulletstorm"
 	]
 }
