@@ -15,13 +15,26 @@ set /P TFDIR="Path (you can paste with right-click): "
 goto notfound
 
 :found
-echo Team Fortress 2 found! Installing script and sounds
+echo Team Fortress 2 found! Copying script files
 robocopy tf "%TFDIR%" /E > nul
-echo exec tfscript >> "%TFDIR%/cfg/autoexec.cfg"
+if exist "%TFDIR%\cfg\.tfse_installed" goto installed
+echo exec tfscript >> "%TFDIR%\cfg\autoexec.cfg"
+echo echo tfse_class scout >> "%TFDIR\cfg\scout.cfg"
+echo echo tfse_class soldier >> "%TFDIR\cfg\soldier.cfg"
+echo echo tfse_class pyro >> "%TFDIR\cfg\pyro.cfg"
+echo echo tfse_class demoman >> "%TFDIR\cfg\demoman.cfg"
+echo echo tfse_class heavyweapons >> "%TFDIR\cfg\heavyweapons.cfg"
+echo echo tfse_class engineer >> "%TFDIR\cfg\engineer.cfg"
+echo echo tfse_class medic >> "%TFDIR\cfg\medic.cfg"
+echo echo tfse_class sniper >> "%TFDIR\cfg\sniper.cfg"
+echo echo tfse_class spy >> "%TFDIR\cfg\spy.cfg"
+echo "tfse configs generated" > "%TFDIR\cfg\.tfse_installed"
+
+:installed
 echo Downloading dependencies
 call npm install >> install.log
-node configure "%TFDIR%"
+node tfscript setup "%TFDIR%"
 echo :: tfscript by nullifiedcat is installed successfully
 if not exist "data\uid.txt" echo. > data\uid.txt
-echo !!! DO NOT FORGET TO PUT YOUR UID IN UID.TXT FILE !!!
+echo !!! DO NOT FORGET TO PUT YOUR UID IN uid.txt FILE !!!
 pause

@@ -25,18 +25,21 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 5. You are ready, but you might want to customize your messages or settings
 6. Run the script with `start.bat`
 
+### If you don't like pre-compiled binaries
+
+Compile `playsound.cpp` using any c++ compiler
+Compile `keypress32.ahk` using `Ahk2Exe` from AutoHotKey (google it)
+Install `node.js` package from [official site](https://nodejs.org/en/download/)
+
 ## Linux (Ubuntu/Debian)
 
 1. Install `nodejs` package (`sudo apt-get install nodejs`)
 2. Install `xdotool` package (`sudo apt-get install xdotool`)
-2. Clone this repository into any folder
-3. Run `npm install` in that folder
-4. Set your uid in `config.json` file. A method to find uid is described below
-5. Right-click on Team Fortress 2 in Steam client, go to Properties, then Set Launch Options. Add `-condebug` there.
-6. Open console in Team Fortress 2, type `bind F11 "exec stdin"`
-7. If Team Fortress 2 is installed in non-default location, edit `gameDirectory` in `config.json` so it will point to right location
-8. You are ready, but you might want to customize your messages or settings
-9. Run the script with `node tfscript`
+3. Clone this repository into any folder
+4. Run `install.sh`
+5. Set your uid in `data/uid.txt` file. A method to find uid is described below
+6. You are ready, but you might want to customize your messages or settings
+7. Run the script with `node tfscript`
 
 # How to find UID
 `uid` looks like `[U:1:111111111]`

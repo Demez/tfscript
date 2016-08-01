@@ -1,9 +1,0 @@
-{
-	"enabled": true,
-	"phaseSkipChance": 0.85,
-	"bufferFlushRate": 800,
-	"promotion": false,
-	"promotionInterval": 60000,
-	"promotionMinFrags": 3,
-	"language": "english"
-}

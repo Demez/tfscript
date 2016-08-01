@@ -17,7 +17,7 @@
 		"You'll be forgotten quickly, $1",
 		"$1 was decapitated by $3's $2",
 		"$1's vital organs were crushed by $3's $2",
-		"$1 isn't good enough",
+		"$1 wasn't good enough",
 		"another noob down: $1",
 		"$1's heart stopped working",
 		"$1 will not be missed",
@@ -135,7 +135,11 @@
 		"$1 got headshot by $3",
 		"$1's skull was crushed by $3's bullet",
 		"$1's brains were blown out of his skull",
-		"$1's head blew up"
+		"$1's head blew up",
+		"Wave good-bye to your head, $1!",
+		"Thanks for standin' still, $1!",
+		"$1'll be needin' another use for that neck!",
+		"Sorry there $1, I mistook you for an actual threat!"
 	],
 	"flames": [
 		"$1 visits the Volcano God",

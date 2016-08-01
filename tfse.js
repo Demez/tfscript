@@ -5,12 +5,19 @@ var Tail = require('tail').Tail;
 var filetail = require('file-tail');
 var EventEmitter = require('events').EventEmitter;
 var jsonfile = require('jsonfile');
+var Config = require('./config');
 
 var LINUX = (process.platform == 'linux');
 var WIN32 = (process.platform == 'win32');
 
-var config = jsonfile.readFileSync('data/config.json');
-var TF2_FOLDER = LINUX ? config.gameDirectory.linux.replace('~', process.env.HOME) : config.gameDirectory.win32;
+var cfg = new Config('config', {
+	gameDirectory: 'UNSET',
+	interactionKey: 'F11',
+	resetStreakOnClassChange: true
+});
+cfg.read();
+cfg.save();
+var TF2_FOLDER = cfg.data.gameDirectory;
 var TF2_STDOUT = TF2_FOLDER + '/console.log';
 var TF2_STDIN  = TF2_FOLDER + '/cfg/stdin.cfg';
 
@@ -18,6 +25,7 @@ var KILL_REGEX = /(.+) killed (.+) with (.+)\.( \(crit\))?/;
 var SUIC_REGEX = /(.+) suicided\./;
 var UID_REGEX = /(\[U:\d:\d+\])/
 var STATUS_REGEX = /"(.+)"\s+(\[U\:\d\:\d+\])/;
+var CLASS_REGEX = /^tfse_class (scout|soldier|pyro|demoman|heavyweapons|engineer|medic|sniper|spy)$/;
 
 var SERVERCHANGE = 'Team Fortress\nMap:\nPlayers:\nBuild:\nServer Number:'.split('\n');
 
@@ -39,6 +47,7 @@ function TFScriptExtender() {
 	this.killStreak = 0;
 	this.usernameRecache = true;
 	this.username = '';
+	var config = cfg.data;
 	
 	if (!exists(TF2_STDOUT)) {
 		console.log('Could not locate console.log! Check your tf2 folder path in config.json and -condebug option in Steam launch options!');
@@ -82,6 +91,14 @@ function TFScriptExtender() {
 	}
 	that.tail.on('line', function(data) {	
 		that.emit('line', data);
+		if (data.indexOf('tfse_class ') == 0) {
+			var x = CLASS_REGEX.exec(data);
+			if (!x) return;
+			that.emit('class', x[1]);
+			if (that.config.resetStreakOnClassChange) {
+				that.killStreak = 0;
+			}
+		}
 		if (that.usernameRecache && data.indexOf(that.uid) > 0 && STATUS_REGEX.test(data)) {
 			var x = STATUS_REGEX.exec(data);
 			that.username = x[1];
@@ -95,6 +112,7 @@ function TFScriptExtender() {
 				that.emit('server-change');
 				console.log('Server changed!');
 				that.serverChangeStage = 0;
+				that.usernameRecache = true;
 				that.killStreak = 0;
 			}
 		} else {

@@ -1,11 +1,18 @@
 var exec = require('child_process').exec;
+var Config = require('./config');
 
-function ModQuake(se, config) {
+function ModQuake(se) {
 	var that = this;
+	this.config = new Config('modquake', {
+		enabled: true
+	});
+	this.config.read();
+	this.config.save();
 	this.playsound = (process.platform == 'win32' ? 'playsound' : 'aplay');
 	this.se = se;
 	this.streakSounds = '0 doublekill triplekill 0 multikill rampage killingspree 0 dominating 0 unstoppable 0 megakill 0 ultrakill eagleeye ownage ludicrouskill headhunter whickedsick monsterkill 0 holyshit godlike'.split(' ');
 	function playSound() {
+		console.log('streak> ' + se.killStreak);
 		if (se.killStreak > 24 || that.streakSounds[se.killStreak - 1] != '0') {
 			if (se.killStreak > 24) {
 				// Sanitize? phew
