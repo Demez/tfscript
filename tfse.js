@@ -21,7 +21,7 @@ var TF2_OUT = TF2_FOLDER + '/console.log';
 var TF2_IN  = TF2_FOLDER + '/cfg/stdin.cfg';
 
 var RE_KILL = /(.+) killed (.+) with (.+)\.( \(crit\))?/;
-var RE_SUICIDE = /(.+) suicided\./;
+var RE_SUICIDE = /(.+) (suicided|died)\./;
 var RE_UID = /(\[U:\d:\d+\])/
 var	RE_STATUS = /"(.+)"\s+(\[U\:\d\:\d+\])/;
 var RE_CLASS = /^tfse_class (scout|soldier|pyro|demoman|heavyweapons|engineer|medic|sniper|spy)$/;
@@ -95,7 +95,6 @@ var TFScriptExtender = {
 	},
 	init: function init() {
 		EventEmitter.call(this);
-		console.log(this.killStreak);
 		if (!LINUX && !WIN32)
 			return this.die(MSG_PLATFORM + process.platform);
 		if (!exists(TF2_OUT))
@@ -134,7 +133,7 @@ var TFScriptExtender = {
 		this.broken = true;
 	},
 	broken: false,
-	serverChangeState: 0,
+	serverChangeStage: 0,
 	killStreak: 0,
 	nameDirty: true,
 	name: '',
