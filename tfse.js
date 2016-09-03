@@ -5,29 +5,34 @@ var Tail = require('tail').Tail;
 var filetail = require('file-tail');
 var EventEmitter = require('events').EventEmitter;
 var jsonfile = require('jsonfile');
-var Config = require('./config');
+var config = require('./config');
 
 var LINUX = (process.platform == 'linux');
 var WIN32 = (process.platform == 'win32');
 
-var cfg = new Config('config', {
+var cfg = config.initSub('tfse', {
 	gameDirectory: 'UNSET',
 	interactionKey: 'F11',
 	resetStreakOnClassChange: true
 });
-cfg.read();
-cfg.save();
-var TF2_FOLDER = cfg.data.gameDirectory;
-var TF2_STDOUT = TF2_FOLDER + '/console.log';
-var TF2_STDIN  = TF2_FOLDER + '/cfg/stdin.cfg';
 
-var KILL_REGEX = /(.+) killed (.+) with (.+)\.( \(crit\))?/;
-var SUIC_REGEX = /(.+) suicided\./;
-var UID_REGEX = /(\[U:\d:\d+\])/
-var STATUS_REGEX = /"(.+)"\s+(\[U\:\d\:\d+\])/;
-var CLASS_REGEX = /^tfse_class (scout|soldier|pyro|demoman|heavyweapons|engineer|medic|sniper|spy)$/;
+var TF2_FOLDER = cfg.gameDirectory;
+var TF2_OUT = TF2_FOLDER + '/console.log';
+var TF2_IN  = TF2_FOLDER + '/cfg/stdin.cfg';
+
+var RE_KILL = /(.+) killed (.+) with (.+)\.( \(crit\))?/;
+var RE_SUICIDE = /(.+) suicided\./;
+var RE_UID = /(\[U:\d:\d+\])/
+var	RE_STATUS = /"(.+)"\s+(\[U\:\d\:\d+\])/;
+var RE_CLASS = /^tfse_class (scout|soldier|pyro|demoman|heavyweapons|engineer|medic|sniper|spy)$/;
 
 var SERVERCHANGE = 'Team Fortress\nMap:\nPlayers:\nBuild:\nServer Number:'.split('\n');
+
+var MSG_NO_OUT = 'Could not locate TF2\'s output file! Make sure you\'ve installed the script correctly.';
+var MSG_NO_UID = 'Could not locate uid.txt file. Please follow README!';
+var MSG_INVALID_UID = 'uid set in uid.txt is invalid! Please follow README!';
+var MSG_PLATFORM = 'Platform not supported: ';
+var MSG_NO_WINDOW = 'Could not locate TF2 window. Make sure TF2 is running and you have xdotool installed';
 
 function exists(name) {
 	try {
@@ -38,120 +43,106 @@ function exists(name) {
 	}
 }
 
-function TFScriptExtender() {
-	EventEmitter.call(this);
-	
-	var that = this;
-	this.broken = false;
-	this.serverChangeStage = 0;
-	this.killStreak = 0;
-	this.usernameRecache = true;
-	this.username = '';
-	var config = cfg.data;
-	
-	if (!exists(TF2_STDOUT)) {
-		console.log('Could not locate console.log! Check your tf2 folder path in config.json and -condebug option in Steam launch options!');
-		this.broken = true;
-		return;
-	}
-	if (!exists('data/uid.txt')) {
-		console.log('uid.txt file not present; Please set your uid in uid.txt file! Instructions can be found in README.md');
-		this.broken = true;
-		return;
-	}
-	this.uid = fs.readFileSync('data/uid.txt').toString();
-	if (!UID_REGEX.test(this.uid)) {
-		console.log('Please set your uid in uid.txt file! Instructions can be found in README.md');
-		this.broken = true;
-		return;
-	} else {
-		var uidm = UID_REGEX.exec(that.uid);
-		that.uid = uidm[1];
-	}
-	if (!LINUX && !WIN32) {
-		console.log('Platform not supported:', process.platform);
-		this.broken = true;
-		return;
-	}
-	if (LINUX) {
-		try {
-			this.window = execSync('xdotool search --class hl2_linux').toString().replace('\n', '');
-			console.log('TF2 Window found:', that.window);
-		} catch (ex) {
-			console.log('Could not locate Team Fortress 2 window');
-			this.broken = true;
-			return;
-		}
-	}
-	// Console I/O
-	if (LINUX) {
-		this.tail = new Tail(TF2_STDOUT);
-	} else {
-		this.tail = filetail.startTailing(TF2_STDOUT);
-	}
-	that.tail.on('line', function(data) {	
-		that.emit('line', data);
+var TFScriptExtender = {
+	lineHandler: function(data) {
+		this.emit('line', data);
 		if (data.indexOf('tfse_class ') == 0) {
-			var x = CLASS_REGEX.exec(data);
+			var x = RE_CLASS.exec(data);
 			if (!x) return;
-			that.emit('class', x[1]);
-			if (that.config.resetStreakOnClassChange) {
-				that.killStreak = 0;
+			this.emit('class', x[1]);
+			if (cfg.resetStreakOnClassChange) {
+				this.killStreak = 0;
 			}
 		}
-		if (that.usernameRecache && data.indexOf(that.uid) > 0 && STATUS_REGEX.test(data)) {
-			var x = STATUS_REGEX.exec(data);
-			that.username = x[1];
-			console.log('tfse> Username is', that.username);
-			that.usernameRecache = false;
+		if (this.nameDirty && data.indexOf(this.uid) > 0 && RE_STATUS.test(data)) {
+			var x = RE_STATUS.exec(data);
+			this.name = x[1];
+			this.nameDirty = false;
+			console.log('name>', this.name);
 		}
-		if (data.indexOf(SERVERCHANGE[that.serverChangeStage]) >= 0) {
-			that.serverChangeStage++;
-			if (that.serverChangeStage >= SERVERCHANGE.length) {
+		if (data.indexOf(SERVERCHANGE[this.serverChangeStage]) >= 0) {
+			this.serverChangeStage++;
+			if (this.serverChangeStage >= SERVERCHANGE.length) {
 				// You've joined a new server
-				that.emit('server-change');
-				console.log('Server changed!');
-				that.serverChangeStage = 0;
-				that.usernameRecache = true;
-				that.killStreak = 0;
+				this.emit('server-change');
+				console.log('tfse> Server changed');
+				this.serverChangeStage = 0;
+				this.nameDirty = true;
+				this.killStreak = 0;
 			}
 		} else {
-			serverChangeState = 0;
+			this.serverChangeState = 0;
 		}
-		if (KILL_REGEX.test(data)) {
-			if (that.usernameRecache)
-				that.send('status');
-			var x = KILL_REGEX.exec(data);
-			if (x[2] == that.username) {
-				that.killStreak = 0;
+		if (RE_KILL.test(data)) {
+			if (this.nameDirty)
+				this.send('status');
+			var x = RE_KILL.exec(data);
+			if (x[2] == this.name) {
+				this.killStreak = 0;
 			}
-			if (x[1] == that.username) {
-				that.killStreak++;
+			if (x[1] == this.name) {
+				this.killStreak++;
 			}
-			that.emit('kill', x[1], x[2], x[3], !!x[4]);
+			this.emit('kill', x[1], x[2], x[3], !!x[4]);
 		}
-		if (SUIC_REGEX.test(data)) {
-			var x = SUIC_REGEX.exec(data);
-			if (x[1] == that.username) {
-				that.killStreak = 0;
+		if (RE_SUICIDE.test(data)) {
+			var x = RE_SUICIDE.exec(data);
+			if (x[1] == this.name) {
+				this.killStreak = 0;
 			}
-			that.emit('suicide', x[1]);
+			this.emit('suicide', x[1]);
 		}
-	});
-	this.send = function send(command) {
-		console.log(' in>', command);
-		fs.writeFile(TF2_STDIN, command);
+	},
+	init: function init() {
+		EventEmitter.call(this);
+		console.log(this.killStreak);
+		if (!LINUX && !WIN32)
+			return this.die(MSG_PLATFORM + process.platform);
+		if (!exists(TF2_OUT))
+			return this.die(MSG_NO_OUT);
+		if (!exists('data/uid.txt'))
+			return this.die(MSG_NO_UID);
+		var uidRaw = fs.readFileSync('data/uid.txt').toString();
+		if (!RE_UID.test(uidRaw))
+			this.die(MSG_INVALID_UID);
+		else
+			this.uid = RE_UID.exec(uidRaw)[1];
 		if (LINUX) {
-			exec('xdotool key --window ' + that.window + ' ' + config.interactionKey);
-		} else {
-			exec('keypress32 ' + config.interactionKey);
+			try {
+				this.window = execSync('xdotool search --class hl2_linux').toString().replace('\n', '');
+			} catch (e) {
+				return this.die(MSG_NO_WINDOW);
+			}
 		}
-	}
-	
-	console.log('TF2SE loaded');
-}
+		if (LINUX)
+			var tail = new Tail(TF2_OUT);
+		else
+			var tail = filetail.startTailing(TF2_OUT);
+		tail.on('line', this.lineHandler.bind(this)); 
+	},
+	send: function(command) {
+		console.log('send>', command);
+		fs.writeFile(TF2_IN, command);
+		if (LINUX) {
+			exec('xdotool key --window ' + this.window + ' ' + cfg.interactionKey);
+		} else {
+			exec('keypress32 ' + cfg.interactionKey);
+		}
+	},
+	die: function(reason) {
+		console.log('fatal>', reason);
+		this.broken = true;
+	},
+	broken: false,
+	serverChangeState: 0,
+	killStreak: 0,
+	nameDirty: true,
+	name: '',
+	uid: '',
+	window: '' /* only on linux */
+};
 
-TFScriptExtender.prototype.__proto__ = EventEmitter.prototype;
+TFScriptExtender.__proto__ = EventEmitter.prototype;
 
 module.exports = TFScriptExtender;
 

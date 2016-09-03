@@ -1,20 +1,21 @@
-var Config = require('./config');
+var config = require('./config');
 
-var jsonfile = require('jsonfile');
+config.init();
+var cfg = config.initSub('tfscript', {
+	mods: 'taunt quake'
+});
 
 if (process.argv[2] == 'setup') {
-	var cfg = new Config('config');
-	cfg.read();
-	cfg.data.gameDirectory = process.argv[3];
-	cfg.save();
+	cfg.gameDirectory = process.argv[3];
 	process.exit(0);
 }
 
 var TFScriptExtender = require('./tfse');
-var ModTaunt = require('./modtaunt');
-var ModQuake = require('./modquake');
+TFScriptExtender.init();
 
-var ScriptExtender = new TFScriptExtender();
-
-var taunt = new ModTaunt(ScriptExtender);
-var quake = new ModQuake(ScriptExtender);
+var mods = cfg.mods.split(' ');
+for (var i = 0; i < mods.length; i++) {
+	console.log('Loading mod ' + mods[i]);
+	var mod = require('./mods/' + mods[i]);
+	mod.init();
+}
