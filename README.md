@@ -28,7 +28,9 @@ Windows version of script uses compiled AutoHotKey script to send keystrokes to 
 ### If you don't like pre-compiled binaries
 
 Compile `playsound.cpp` using any c++ compiler
+
 Compile `keypress32.ahk` using `Ahk2Exe` from AutoHotKey (google it)
+
 Install `node.js` package from [official site](https://nodejs.org/en/download/)
 
 ## Linux (Ubuntu/Debian)

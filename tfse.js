@@ -20,11 +20,27 @@ var TF2_FOLDER = cfg.gameDirectory;
 var TF2_OUT = TF2_FOLDER + '/console.log';
 var TF2_IN  = TF2_FOLDER + '/cfg/stdin.cfg';
 
-var RE_KILL = /(.+) killed (.+) with (.+)\.( \(crit\))?/;
-var RE_SUICIDE = /(.+) (suicided|died)\./;
+var RE_KILL = /^(.+) killed (.+) with (.+)\.( \(crit\))?$/;
+var RE_SUICIDE = /^(.+) (suicided|died)\.$/;
 var RE_UID = /(\[U:\d:\d+\])/
 var	RE_STATUS = /"(.+)"\s+(\[U\:\d\:\d+\])/;
 var RE_CLASS = /^tfse_class (scout|soldier|pyro|demoman|heavyweapons|engineer|medic|sniper|spy)$/;
+
+var RE_STATUS_ADV = [
+	/^hostname: (.+)$/, /* 1:hostname */
+	/^version : \d+\/\d+ \d+ (?:in)?secure$/,
+	/^udp\/ip  : [0-9:\.]+:(\d{1,5})  \(public ip: ([0-9\.]+)\)$/, /* 1:port,2:ip */
+	/^steamid : \[.+\] \(\d+\)$/,
+	/^account : (?:not )?logged in  \(.+\)$/,
+	/^map     : (.+) at: -?\d+ x, -?\d+ y, -?\d+ z$/, /* 1:map */
+	/^players : (\d+) humans, (\d+) bots \((\d+) max\)$/, /* 1:humans,2:bots,3:max */
+	/^edicts  : \d+ used of \d+ max$/,
+	/^tags    : (.+)$/, /* 1:tags */
+	/^         Spawns Points Kills Deaths Assists$/,
+	/^(?:Scout|Soldier|Pyro|Demoman|Heavy|Engineer|Medic|Sniper|Spy)(?:\s+\d+){5}$/,
+	/^# userid name                uniqueid            connected ping loss state(?:  adr)?$/,
+	/^# ([0-9 ]{6}) "(.+)"\s+(?:(\[U:\d:\d+\])\s+([0-9:]+)\s+\d+\s+\d+ |(BOT)\s+)(?:[a-z]+)(?:\s+[0-9\.:a-z]+)?$/ /* 1:id,2:name,3:steamid,4:bot,5:time */
+];
 
 var SERVERCHANGE = 'Team Fortress\nMap:\nPlayers:\nBuild:\nServer Number:'.split('\n');
 
@@ -44,8 +60,74 @@ function exists(name) {
 }
 
 var TFScriptExtender = {
+	status: {
+		_state: 0,
+		_unsafe: {}
+	},
 	lineHandler: function(data) {
 		this.emit('line', data);
+		/* Parsing status data */
+		var status = this.status;
+		(function () {
+			if (status._state < 4) {
+				var m = data.match(RE_STATUS_ADV[status._state]);
+				if (!m) {
+					status._state = 0;
+					return;
+				}
+				switch (status._state) {
+				case 0:
+					status._unsafe.hostname = m[1]; break;
+				case 2:
+					status._unsafe.port = m[1];
+					status._unsafe.ip = m[2]; break;
+				}
+				status._state++;
+			} else {
+				if (status._state == 4) {
+					status.hostname = status._unsafe.hostname;
+					status.port = status._unsafe.port;
+					status.ip = status._unsafe.ip;
+					status.players = [];
+				}
+				for (var i = 4; i < RE_STATUS_ADV.length; i++) {
+					var m = data.match(RE_STATUS_ADV[i]);
+					if (!m && data != '') continue;
+					switch (i) {
+					case 5:
+						status.map = m[1]; break;
+					case 6:
+						status.numPlayers = parseInt(m[1]);
+						status.numBots = parseInt(m[2]);
+						status.maxPlayers = parseInt(m[3]); break;
+					case 8:
+						status.tags = m[1]; break;
+					case 12:
+						if (m[5]) {
+							status.players.push({
+								id: parseInt(m[1]),
+								name: m[2],
+								bot: true
+							});
+						} else {
+							status.players.push({
+								id: parseInt(m[1]),
+								name: m[2],
+								steamid: m[3],
+								time: m[4]
+							});
+						}
+						break;
+					}
+					status._state++;
+					return;
+				}
+				console.log('line break:'+data);
+				status._state = 0;
+				console.log(status);
+			}
+		})();
+		
 		if (data.indexOf('tfse_class ') == 0) {
 			var x = RE_CLASS.exec(data);
 			if (!x) return;

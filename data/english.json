@@ -168,6 +168,8 @@
 		"%v got stabbed"
 	],
 	"knives&": [
+		"%v's teammates failed to spycheck",
+		"%v felt his sins crawling on his back",
 		"%v WAS SURPRISE BUTTSEXED",
 		"%v's BACKBONE IS CRIPPLED",
 		"%v's BACK WAS DESTROYED",
@@ -177,7 +179,7 @@
 		"%v WAS PENETRATED FROM BEHIND",
 		"Here lies %v. He ran fast and died a virgin!",
 		"Well, off to visit %v's mother!",
-		"%v had an unexpected anal intercourse with %k's knife"
+		"%v had an unexpected anal intercourse with %k's %w"
 	],
 	"ambassador&": [
 		"%v's head blew up",
