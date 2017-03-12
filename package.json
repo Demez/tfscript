@@ -5,6 +5,7 @@
   "main": "ctaunt.js",
   "dependencies": {
     "file-tail": "^0.3.0",
+    "googleapis": "^18.0.0",
     "jsonfile": "^2.3.1",
     "prompt": "^1.0.0",
     "tail": "^1.1.1",
